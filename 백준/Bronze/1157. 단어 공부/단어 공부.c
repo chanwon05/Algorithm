@@ -7,8 +7,6 @@ int main(void)
 	char word[1000000] = { 0, };
 	scanf("%s", word);
 	int count[26] = { 0, };
-	char alpha[26] = { 'A','B','C','D', 'E','F','G','H',
-		'I','J','K','L','M','N','O','P','Q','R','S','T', 'U','V','W','X','Y','Z' };
 	
 	for (char i = 'a'; i <= 'z'; i++)
 	{
@@ -32,7 +30,7 @@ int main(void)
 		}
 	}
 
-	int n;
+	char n;
 	int max = 0;
 
 	for (int i = 0; i < 26; i++)
@@ -40,31 +38,17 @@ int main(void)
 		if (count[i] > max)
 		{
 			max = count[i];
-			n = i;
+			n = 65 + i;
 		}
-	}
-	
-	int sum = 0;
-
-	for (int i = 0; i < 26; i++)
-	{
-		if (max == count[i])
+		else if (count[i] == max)
 		{
-			sum++;
+			n = 63;
 		}
 	}
 
-	if (sum >= 2)
-	{
-		printf("?");
-
-		return 0;
-	}
-
-
-	printf("%c", alpha[n]);
-
 	
+
+	printf("%c", n);
 
 
 
