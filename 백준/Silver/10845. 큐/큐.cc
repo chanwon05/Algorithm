@@ -1,6 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+int Q[10001] = { 0 };
+int head = 0, tail = 0;
+
+void push(int x) {
+	Q[tail++] = x;
+}
+
+void pop() {
+	head++;
+}
+
+int empty() {
+	if (tail - head == 0) return 1;
+	else return 0;
+}
+
+int front() {
+	 return Q[head];
+}
+
+int back() {
+	return Q[tail-1];
+}
+
+
 int main()
 {
 	ios::sync_with_stdio(0);
@@ -8,7 +33,7 @@ int main()
 	
 	int n;
 	cin >> n;
-	queue <int> Q;
+	
 
 	while (n--) {
 		string s;
@@ -16,28 +41,28 @@ int main()
 		if (s == "push") {
 			int dat;
 			cin >> dat;
-			Q.push(dat);
+			push(dat);
 		}
 		else if (s == "pop") {
-			if (Q.empty())cout << -1 << '\n';
+			if (empty())cout << -1 << '\n';
 			else {
-				cout << Q.front() << '\n';
-				Q.pop();
+				cout << front() << '\n';
+				pop();
 			}
 		}
 		else if (s == "size") {
-			cout << Q.size() << '\n';
+			cout << tail-head << '\n';
 		}
 		else if (s == "empty") {
-			cout << Q.empty() << '\n';
+			cout << empty() << '\n';
 		}
 		else if (s == "front") {
-			if (Q.empty())cout << -1 << '\n';
-			else cout << Q.front() << '\n';
+			if (empty())cout << -1 << '\n';
+			else cout << front() << '\n';
 		}
 		else {
-			if (Q.empty())cout << -1 << '\n';
-			else cout << Q.back() << '\n';
+			if (empty())cout << -1 << '\n';
+			else cout << back() << '\n';
 		}
 	}
 }
